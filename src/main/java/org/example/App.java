@@ -2,6 +2,7 @@ package org.example;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Calculate difference between two LocalDateTimes
@@ -14,6 +15,16 @@ public class App
 
         LocalDateTime start = LocalDateTime.parse("2020-11-01T12:30:00"); // yyyy-MM-ddTHH:mm:ss
         LocalDateTime end   = LocalDateTime.parse("2020-11-02T12:35:01");
+
+        String str = "31-12-1999 00:00";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+        System.out.println(dateTime.format(formatter));
+
+
+//        String str = "1986-04-08 12:30";
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+//        LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
 
         long difference = Duration.between(start, end).toMillis();
 
